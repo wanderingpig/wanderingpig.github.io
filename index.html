@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>憨憨小赵</title>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            background-image: url('b13_small.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            height: 100vh;
+            font-size: 85%;
+        }
+        
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+            color: rgb(243, 58, 106);
+        }
+        
+        .content {
+            position: absolute;
+            width: 100%;
+            top: 20%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(255,105,180);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>小赵❤️怡宝</h2>
+        <div class="timer">
+            <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
+        </div>
+    </div>
+
+    <script>
+        function timer() {
+            var start = new Date(2022, 4, 21); // 2022年5月21日
+            var t = new Date() - start;
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            var hours = formatTime(Math.floor(t / (1000 * 60 * 60) % 24));
+            var minutes = formatTime(Math.floor(t / (1000 * 60) % 60));
+            var seconds = formatTime(Math.floor(t / 1000 % 60));
+
+            document.getElementById('d').innerHTML = days;
+            document.getElementById('h').innerHTML = hours;
+            document.getElementById('m').innerHTML = minutes;
+            document.getElementById('s').innerHTML = seconds;
+        }
+
+        function formatTime(time) {
+            return time < 10 ? '0' + time : time;
+        }
+
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
